@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import CustomButton from "../custom-button/custom-button";
 import CartItem from "../cart-item/cart-item";
+import { selectCartItems } from "../../redux/cart/cart.selector";
 
 const Cart = ({ cartItems }) => {
   return (
@@ -16,8 +17,8 @@ const Cart = ({ cartItems }) => {
   );
 };
 
-const mapDispatchToProps = ({ cart: { cartItems } }) => ({
-  cartItems,
+const mapDispatchToProps = (state) => ({
+  cartItems: selectCartItems(state),
 });
 
 export default connect(mapDispatchToProps)(Cart);
